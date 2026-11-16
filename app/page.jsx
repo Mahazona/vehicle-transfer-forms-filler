@@ -50,11 +50,10 @@ export default function HomePage() {
       console.error('Error reading language preference:', e);
     }
 
-    // 2. Dark mode detection
+    // 2. Theme initialization (Default to light / white mode on first loading)
     try {
       const storedTheme = localStorage.getItem('theme');
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
+      if (storedTheme === 'dark') {
         setTheme('dark');
         document.documentElement.classList.add('dark');
       } else {

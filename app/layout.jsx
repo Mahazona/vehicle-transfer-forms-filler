@@ -132,8 +132,8 @@ export default function RootLayout({ children }) {
               (function() {
                 try {
                   var storedTheme = localStorage.getItem('theme');
-                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (storedTheme === 'dark' || (!storedTheme && supportDarkMode)) {
+                  // Default to light (white mode) on initial loading unless user explicitly saved 'dark'
+                  if (storedTheme === 'dark') {
                     document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.remove('dark');
