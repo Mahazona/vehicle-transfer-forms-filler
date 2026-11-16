@@ -2,7 +2,7 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://srilanka-vehicle-transfer.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vehicle-transfer-forms-filler.vercel.app';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

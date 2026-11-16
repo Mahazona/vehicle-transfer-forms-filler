@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://srilanka-vehicle-transfer.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vehicle-transfer-forms-filler.vercel.app';
   const lastModified = new Date();
 
   return [
