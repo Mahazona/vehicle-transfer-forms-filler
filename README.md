@@ -1,97 +1,95 @@
-# Sri Lanka Vehicle Transfer Forms Filler (MTA 6A, 6B & MTA 8)
+# 🚗 Sri Lanka Vehicle Transfer Forms Filler (MTA 6 & MTA 8)
 
-A **Next.js** application built for filling official Sri Lankan Department of Motor Traffic (DMT / RMV) vehicle transfer forms with pixel-perfect box alignment, long name overflow protection, Sri number support, open paper dealer handling, and instant print-ready PDF export. Ready for **Vercel** deployment.
+A free, easy-to-use web tool to auto-fill official **Department of Motor Traffic (DMT / RMV)** vehicle transfer forms in Sri Lanka. It creates a clean, pixel-perfect, 10-page print-ready PDF ready for physical signature and submission.
 
 ---
 
-## 🚀 Live Local Application
+## 🌟 Why Use This Tool?
 
-The Next.js application is running locally:
+- **No Handwriting Mistakes:** Type your details once and get perfectly aligned official forms.
+- **Supports All Number Plates:** Handles vintage numbers (e.g. `5 Sri 2525`, `19 Sri 1234`) and modern provincial plates (e.g. `WP CAA-4589`).
+- **Fits Long Sri Lankan Names:** Long ge-names automatically wrap and abbreviate into official initials + surname without spilling off the paper.
+- **"Open Papers" for Car Sales:** Optional toggle to keep dates blank for vehicle dealerships and brokers.
+- **100% Private & Secure:** All PDF processing happens inside your browser. No names, NIC numbers, or vehicle details are ever saved or uploaded to any server.
+- **Tri-Lingual Support:** Available in **English**, **සිංහල (Sinhala)**, and **தமிழ் (Tamil)** with Dark Mode.
+
+---
+
+## 📋 How To Use (Step-by-Step)
+
+1. **Open the App:** Visit the live website or run it locally.
+2. **Enter Details:**
+   - Vehicle Registration Number (e.g., `5 Sri 2525` or `WP CAA-4589`).
+   - Current Owner (Seller / Transferor) Name, Address, and NIC.
+   - New Owner (Buyer / Transferee) Name, Address, and NIC.
+   - Two Witnesses (Name, Address, and NIC).
+   *(Tip: Click **"Try Sample Data"** in the top bar to test with pre-filled examples!)*
+3. **Review the Live Preview:** View your filled forms in real-time on the right side of the screen.
+4. **Print or Download:** Click **"Print Forms"** to send directly to your printer, or **"Download PDF"** to save the clean 10-page document.
+5. **Sign with Pen:** Sign with blue/black pen on the designated signature lines (kept blank for security) and submit to the DMT office.
+
+---
+
+## 📂 Forms Included in the 10-Page PDF
+
+| Page | Form Name | Purpose |
+| :--- | :--- | :--- |
+| **Pages 1 & 2** | **Form MTA 6A & A1** | Notice of transfer sent to the Commissioner General of Motor Traffic within 14 days. |
+| **Pages 3 to 6** | **Form MTA 6B & B1** | Transferee copies, One-Day Transfer declaration, and official instructions. |
+| **Pages 7 to 10** | **Form MTA 8 (C & C1)** | Application for registration on transfer, including reverse page declarations. |
+
+---
+
+## 📑 Required Documents to Take to DMT / RMV
+
+Before visiting the Department of Motor Traffic (Narahenpita or District Secretariat), ensure you have:
+
+- [ ] Printed & signed **MTA 6 Forms (Parts A, A1, B, B1)**
+- [ ] Printed & signed **MTA 8 Forms (Form C & C1)**
+- [ ] Original **Certificate of Registration (CR / වාහන පොත)** (unlaminated and undamaged)
+- [ ] Valid **Revenue License (ආදායම් බලපත්‍රය)** + 1 clear photocopy
+- [ ] Certified photocopies of **National Identity Cards (NIC)** of both seller and buyer
+- [ ] **Finance / Leasing Clearance Letter (CMT 63)** *(only if vehicle was under lease or bank loan)*
+- [ ] **Weight Certificate (CMT 130)** *(only for dual-purpose vans, lorries, trucks, or commercial vehicles)*
+- [ ] **One-Day Service Affidavit / Consent Letter** *(only if applying for One-Day service and seller cannot attend in person)*
+
+---
+
+## 💻 How to Run Locally
+
+If you are a developer or want to run this project on your own computer:
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (Version 18 or higher)
+
+### Setup & Run
 ```bash
+# 1. Clone the repository
+git clone https://github.com/Mahazona/vehicle-transfer-forms-filler.git
+
+# 2. Go to the project folder
+cd vehicle-transfer-forms-filler
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the local server
 npm run dev
 ```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+
+Open **[http://localhost:3000](http://localhost:3000)** in your web browser.
 
 ---
 
-## 🛠️ Key Fixes & Features
+## ☁️ Deploy to Vercel (Free Hosting)
 
-### 1. Safe Long Name Overflow Guard (Fix for Bug 1)
-- When Sri Lankan names exceed the standard 35 character boxes, characters continue printing outside the box grid as required by DMT submission practices.
-- **Printable Area Guard:** Text is automatically scaled and condensed so that it **never exceeds the 588 pt printable page margin**, eliminating physical printer cutoff.
-
-### 2. Full Sri & Vintage Number Support (Fix for Bug 2)
-- Added dedicated parsing for Sri numbers (e.g. `5 Sri 2525`, `19 Sri 1234`, `301 Sri 5555`).
-- On **MTA 6 Forms (A, A1, B, B1)**:
-  - **Set 1 (3 boxes):** Prefix number (e.g. `5`)
-  - **Set 2 (3 boxes):** `SRI`
-  - **Set 3 (4 boxes):** 4 digits (e.g. `2525`)
-- On **MTA 8 Forms (C, C1)**:
-  - Formatted into the 10 continuous boxes (e.g. `[5] [ ] [S][R][I] [ ] [2][5][2][5]`).
-- Supports modern formats (`WP CAA-2525`) and vintage dash formats (`64-1234`).
-
-### 3. Exact Witness Line Alignment (Fix for Bug 3)
-- Witness 1 (Transferor's witness) and Witness 2 (Transferee's witness) now print directly on their allocated dotted baselines (`Name`, `Address`, `NIC`).
-- **Signature lines are strictly left 100% BLANK** for hand signing in ink.
-
-### 4. "Open Papers" Dealer Support (Fix for Bug 4)
-- Added an **"Open Papers (Leave Blank)"** toggle for car sales and dealership transfers.
-- When enabled, all date boxes across MTA 6, MTA 8, and reverse pages remain completely blank, preventing the 14-day DMT penalty from triggering before actual resale.
-
-### 5. Complete One-Day Transfer Filling (Fix for Bug 5)
-- All 3 language declaration lines (Sinhala, Tamil, and English) are filled with the vehicle registration number.
-- Transferor Name & Date line is bounded within the designated line (`x=340` to `575`) with dynamic font sizing so it never spills past the page border.
-- Signature line remains strictly blank for manual signing.
-
-### 6. Clean 10-Page Export (Blank Pages Removed)
-- In the original template, pages 2, 4, and 13 were blank spacer pages.
-- The app automatically strips all blank pages, delivering a clean 10-page document where every page contains actual forms and instructions.
-
-### 7. Full Tri-Lingual Localization (Sinhala, English & Tamil)
-- Complete UI localization with language switcher:
-  - **English (EN)**
-  - **සිංහල (Sinhala - SI)**
-  - **தமிழ் (Tamil - TA)**
-- As per Sri Lanka Department of Motor Traffic regulations, official physical forms are completed in English block capital letters; all labels, descriptions, warnings, and formatting guidelines adapt dynamically to the user's chosen language.
-
-### 8. Accessible Dark Mode & OLED Optimization
-- High-contrast accessible dark theme conforming to `ui-ux-pro-max` guidelines.
-- Persistent user preference in `localStorage` with automatic system theme detection (`prefers-color-scheme`).
-- Contrast ratio $\ge 7:1$ in dark mode and $\ge 4.5:1$ in light mode.
-
-### 9. Top-Tier SEO & Civic Discoverability
-- **Next.js Metadata API:** OpenGraph, Twitter Cards, localized titles, and multi-lingual keywords (`en`, `si`, `ta`).
-- **Structured Data:** JSON-LD schema (`WebApplication` & `GovernmentService`) with full feature list and zero-cost pricing.
-- **Dynamic SEO Endpoints:**
-  - `/robots.txt` ([app/robots.js](file:///c:/Users/asus/OneDrive/Documents/vehicle%20transfer%20forms%20filler/vehicle-transfer-forms-filler-1/app/robots.js))
-  - `/sitemap.xml` ([app/sitemap.js](file:///c:/Users/asus/OneDrive/Documents/vehicle%20transfer%20forms%20filler/vehicle-transfer-forms-filler-1/app/sitemap.js))
-  - `/manifest.webmanifest` ([app/manifest.js](file:///c:/Users/asus/OneDrive/Documents/vehicle%20transfer%20forms%20filler/vehicle-transfer-forms-filler-1/app/manifest.js))
-- Hreflang alternates (`en-LK`, `si-LK`, `ta-LK`).
+1. Fork or push this repository to your GitHub account.
+2. Go to [Vercel](https://vercel.com) and click **"Add New Project"**.
+3. Select this repository and click **"Deploy"**. (Next.js is detected automatically with zero configuration).
 
 ---
 
-## ☁️ Deploying to Vercel
+## 📄 License & Disclaimer
 
-This repository is structured for **zero-config Vercel deployment**:
-
-1. Commit and push changes to GitHub:
-   ```bash
-   git add .
-   git commit -m "Next.js migration with Sri Lanka vehicle transfer fixes"
-   git push origin main
-   ```
-2. Log in to [Vercel](https://vercel.com).
-3. Click **"Add New Project"** and select this repository.
-4. Framework Preset will be automatically detected as **Next.js**.
-5. Click **"Deploy"**.
-
----
-
-## 🐍 Standalone Python CLI Utility
-
-You can also run batch form filling via Python:
-
-```bash
-python fill_forms.py
-```
-This generates `Filled_Sri_Sample.pdf` with sample data.
+- **License:** Open-source under the MIT License. Free for personal, civic, and commercial use.
+- **Disclaimer:** This is an independent civic utility built to assist Sri Lankan vehicle owners. All completed forms must be signed and officially submitted to the Department of Motor Traffic (DMT / RMV) in accordance with the Motor Traffic Act.
