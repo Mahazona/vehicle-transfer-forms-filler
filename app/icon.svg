@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="45%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <!-- Green Success Badge Gradient -->
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- Document Fill Gradient -->
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="cardShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Base with Sri Lankan Civic Blue Gradient -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)" />
+
+  <!-- Outer Elegant Gold Border Accent -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="none" stroke="url(#goldGrad)" stroke-width="12" opacity="0.9" />
+
+  <!-- Background Official Document / MTA Transfer Form -->
+  <g filter="url(#cardShadow)">
+    <!-- Document Page -->
+    <path d="M160 96 h144 l64 64 v184 a20 20 0 0 1 -20 20 h-188 a20 20 0 0 1 -20 -20 v-228 a20 20 0 0 1 20 -20 z" 
+          fill="url(#docGrad)" stroke="#cbd5e1" stroke-width="2" />
+    
+    <!-- Folded Corner -->
+    <path d="M304 96 v48 a16 16 0 0 0 16 16 h48 z" fill="#cbd5e1" />
+
+    <!-- Document Heading & Fill Lines -->
+    <rect x="180" y="148" width="96" height="12" rx="6" fill="#1e40af" />
+    <rect x="180" y="174" width="136" height="8" rx="4" fill="#94a3b8" />
+    <rect x="180" y="194" width="120" height="8" rx="4" fill="#94a3b8" />
+    <rect x="180" y="214" width="144" height="8" rx="4" fill="#94a3b8" />
+    <rect x="180" y="234" width="104" height="8" rx="4" fill="#94a3b8" />
+  </g>
+
+  <!-- Foreground Automobile / Vehicle Graphic -->
+  <g filter="url(#cardShadow)">
+    <!-- Car Body Silhouette -->
+    <path d="M96 360 c0 -10 6 -18 16 -20 l60 -18 c18 -42 46 -70 90 -74 l104 0 c36 0 64 22 78 54 l46 16 c16 6 26 20 26 38 v26 c0 12 -10 20 -20 20 h-22 c-4 -28 -28 -50 -58 -50 s-54 22 -58 50 h-108 c-4 -28 -28 -50 -58 -50 s-54 22 -58 50 h-20 c-10 0 -18 -8 -18 -18 z" 
+          fill="#ffffff" stroke="#e2e8f0" stroke-width="2" />
+
+    <!-- Windshield & Side Windows -->
+    <path d="M184 316 l52 -52 h60 v52 z" fill="#0284c7" />
+    <path d="M312 264 h48 c22 0 42 16 50 38 l14 14 h-112 z" fill="#38bdf8" />
+
+    <!-- Wheels (Alloy look) -->
+    <!-- Rear Wheel -->
+    <circle cx="196" cy="398" r="32" fill="#0f172a" stroke="#cbd5e1" stroke-width="6" />
+    <circle cx="196" cy="398" r="14" fill="#94a3b8" stroke="#ffffff" stroke-width="3" />
+    <!-- Front Wheel -->
+    <circle cx="424" cy="398" r="32" fill="#0f172a" stroke="#cbd5e1" stroke-width="6" />
+    <circle cx="424" cy="398" r="14" fill="#94a3b8" stroke="#ffffff" stroke-width="3" />
+
+    <!-- Front Headlight Accent -->
+    <path d="M494 346 l14 4 v14 l-16 -2 z" fill="#facc15" />
+    <!-- Rear Taillight Accent -->
+    <path d="M98 348 l12 -2 v14 l-14 -2 z" fill="#ef4444" />
+  </g>
+
+  <!-- Official DMT Green Verified Badge (Seal of Approval) -->
+  <g transform="translate(348, 88)" filter="url(#cardShadow)">
+    <circle cx="44" cy="44" r="44" fill="url(#greenGrad)" stroke="#ffffff" stroke-width="7" />
+    <path d="M26 44 l12 14 l24 -26" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

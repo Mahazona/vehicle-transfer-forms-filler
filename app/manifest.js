@@ -9,8 +9,18 @@ export default function manifest() {
     theme_color: '#1e40af',
     icons: [
       {
-        src: '/favicon.ico',
+        src: '/icon.svg',
         sizes: 'any',
+        type: 'image/svg+xml',
+      },
+      {
+        src: '/apple-icon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+      },
+      {
+        src: '/favicon.ico',
+        sizes: '48x48 32x32 16x16',
         type: 'image/x-icon',
       },
     ],

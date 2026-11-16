@@ -65,6 +65,15 @@ export const metadata = {
     title: 'Sri Lanka Vehicle Transfer Forms Filler (MTA 6A, 6B & MTA 8)',
     description: 'Print-ready Sri Lanka vehicle transfer forms auto-filler with Sri numbers, open papers, and clean 10-page output.',
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '48x48 32x32 16x16' },
+    ],
+    apple: [
+      { url: '/apple-icon.svg', type: 'image/svg+xml' },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
