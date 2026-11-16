@@ -45,16 +45,16 @@ export const formGridCoordinates = {
       name: { x: 425, y: 782 },
       address: { x: 445, y: 816 },
       nic: { x: 425, y: 859 },
-      date: { x: 90, y: 859 }
+      date: { x: 120, y: 860 }
       // Signature is skipped and blank!
     },
 
     // One-Day Transfer Section (Bottom)
     one_day: {
-      sinhala_veh: { x: 200, y: 917 },
-      tamil_veh: { x: 35, y: 930 },
-      english_veh: { x: 375, y: 944 },
-      name_date: { x: 340, y: 959, max_x: 575 }
+      sinhala_veh: { x: 152, y: 918 },
+      tamil_veh: { x: 30, y: 927.5 },
+      english_veh: { x: 380, y: 937 },
+      name_date: { x: 345, y: 962, max_x: 575 }
       // Signature of Transferor is skipped and blank!
     }
   },
@@ -86,13 +86,13 @@ export const formGridCoordinates = {
       name: { x: 425, y: 782 },
       address: { x: 445, y: 816 },
       nic: { x: 425, y: 860 },
-      date: { x: 90, y: 860 }
+      date: { x: 120, y: 860 }
     },
     one_day: {
-      sinhala_veh: { x: 200, y: 919 },
-      tamil_veh: { x: 35, y: 932 },
-      english_veh: { x: 375, y: 946 },
-      name_date: { x: 340, y: 961, max_x: 575 }
+      sinhala_veh: { x: 152, y: 918 },
+      tamil_veh: { x: 30, y: 927.5 },
+      english_veh: { x: 380, y: 937 },
+      name_date: { x: 345, y: 962, max_x: 575 }
     }
   },
 
@@ -123,13 +123,13 @@ export const formGridCoordinates = {
       name: { x: 425, y: 768 },
       address: { x: 445, y: 803 },
       nic: { x: 425, y: 843 },
-      date: { x: 90, y: 843 }
+      date: { x: 120, y: 844 }
     },
     one_day: {
-      sinhala_veh: { x: 200, y: 909 },
-      tamil_veh: { x: 35, y: 922 },
-      english_veh: { x: 375, y: 936 },
-      name_date: { x: 340, y: 951, max_x: 575 }
+      sinhala_veh: { x: 152, y: 901 },
+      tamil_veh: { x: 35, y: 912.5 },
+      english_veh: { x: 380, y: 923 },
+      name_date: { x: 345, y: 948, max_x: 575 }
     }
   },
 
@@ -160,13 +160,13 @@ export const formGridCoordinates = {
       name: { x: 400, y: 773 },
       address: { x: 410, y: 807 },
       nic: { x: 400, y: 848 },
-      date: { x: 90, y: 848 }
+      date: { x: 118, y: 851 }
     },
     one_day: {
-      sinhala_veh: { x: 180, y: 900 },
-      tamil_veh: { x: 30, y: 910 },
-      english_veh: { x: 360, y: 918 },
-      name_date: { x: 340, y: 947, max_x: 565 }
+      sinhala_veh: { x: 150, y: 907 },
+      tamil_veh: { x: 30, y: 917.5 },
+      english_veh: { x: 370, y: 926 },
+      name_date: { x: 340, y: 952, max_x: 565 }
     }
   },
 

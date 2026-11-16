@@ -351,13 +351,13 @@ export async function generateFilledVehicleTransferPDF(formData, options = {}) {
     if (formData.witness2Name) drawPlainText(p, font, formData.witness2Name.toUpperCase(), c.witness_2.name);
     if (formData.witness2Address) drawPlainText(p, font, formData.witness2Address.toUpperCase(), c.witness_2.address);
     if (formData.witness2Nic) drawPlainText(p, font, formData.witness2Nic.toUpperCase(), c.witness_2.nic);
-    if (hasDate) drawPlainText(p, font, formData.transferDate.trim(), c.witness_2.date);
+    if (hasDate) drawPlainText(p, font, formData.transferDate.trim(), c.witness_2.date, { fontSize: 9.0 });
 
     // One-Day Transfer Section: Fill all 3 language spaces + Name/Date safely!
     if (formData.isOneDay && parsedVeh.fullFormatted) {
-      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.sinhala_veh, { fontSize: 9.5 });
-      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.tamil_veh, { fontSize: 9.5 });
-      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.english_veh, { fontSize: 9.5 });
+      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.sinhala_veh, { fontSize: 8.5 });
+      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.tamil_veh, { fontSize: 7.5 });
+      drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.english_veh, { fontSize: 8.5 });
 
       let ownerDateStr = (formData.transferorName || '').toUpperCase().trim();
       if (hasDate) {

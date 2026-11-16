@@ -199,13 +199,13 @@ def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPL
 
     pages_mta6_cfg = [
         (0, 281.9, 300.3, 350.6, 407.8, 428.0, 480.1, 655.5, 819.2, 
-         (415, 652, 445, 685, 425, 751), (425, 782, 445, 816, 425, 859, 90, 859), (200, 917, 35, 930, 375, 944, 340, 959)),
+         (415, 652, 445, 685, 425, 751), (425, 782, 445, 816, 425, 859, 120, 860), (152, 918, 30, 927.5, 380, 937, 345, 962)),
         (2, 285.5, 304.5, 354.8, 412.0, 432.2, 484.2, 649.6, 819.1,
-         (415, 647, 445, 682, 425, 753), (425, 782, 445, 816, 425, 860, 90, 860), (200, 919, 35, 932, 375, 946, 340, 961)),
+         (415, 647, 445, 682, 425, 753), (425, 782, 445, 816, 425, 860, 120, 860), (152, 918, 30, 927.5, 380, 937, 345, 962)),
         (4, 274.8, 295.6, 345.9, 403.1, 424.5, 476.6, 642.1, 805.2,
-         (415, 640, 445, 669, 425, 734), (425, 768, 445, 803, 425, 843, 90, 843), (200, 909, 35, 922, 375, 936, 340, 951)),
+         (415, 640, 445, 669, 425, 734), (425, 768, 445, 803, 425, 843, 120, 844), (152, 901, 35, 912.5, 380, 923, 345, 948)),
         (6, 292.3, 312.6, 362.0, 418.1, 437.8, 488.8, 660.9, 815.6,
-         (390, 652, 410, 683, 400, 745), (400, 773, 410, 807, 400, 848, 90, 848), (180, 900, 30, 910, 360, 918, 340, 947))
+         (390, 652, 410, 683, 400, 745), (400, 773, 410, 807, 400, 848, 118, 851), (150, 907, 30, 917.5, 370, 926, 340, 952))
     ]
 
     xs_35_std = [48.6 + i * 15.12 for i in range(36)]
@@ -274,12 +274,12 @@ def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPL
         if data.get("witness2Nic"):
             draw_plain_text_safe(p, data["witness2Nic"].upper(), w2[4], w2[5])
         if has_date:
-            draw_plain_text_safe(p, date_str, w2[6], w2[7])
+            draw_plain_text_safe(p, date_str, w2[6], w2[7], fontsize=9.0)
 
         if data.get("isOneDay") and parsed_veh.get("full"):
-            draw_plain_text_safe(p, parsed_veh["full"], od[0], od[1])
-            draw_plain_text_safe(p, parsed_veh["full"], od[2], od[3])
-            draw_plain_text_safe(p, parsed_veh["full"], od[4], od[5])
+            draw_plain_text_safe(p, parsed_veh["full"], od[0], od[1], fontsize=8.5)
+            draw_plain_text_safe(p, parsed_veh["full"], od[2], od[3], fontsize=7.5)
+            draw_plain_text_safe(p, parsed_veh["full"], od[4], od[5], fontsize=8.5)
 
             owner_date = (data.get("transferorName") or "").upper().strip()
             if has_date:
