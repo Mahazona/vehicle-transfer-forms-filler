@@ -7,6 +7,7 @@ import NoticeCard from '../components/NoticeCard';
 import VehicleForm from '../components/VehicleForm';
 import PdfPreview from '../components/PdfPreview';
 import InstructionsGuide from '../components/InstructionsGuide';
+import BackToTopProgress from '../components/BackToTopProgress';
 import { sriSampleData, modernSampleData, blankFormData } from '../data/sampleData';
 import { translations } from '../data/translations';
 import { generateFilledVehicleTransferPDF, printPdfBlobDirectly, downloadPdfBlob } from '../utils/pdfFiller';
@@ -24,6 +25,12 @@ export default function HomePage() {
   const [currentLang, setCurrentLang] = useState('en');
   // Dark mode state ('light' | 'dark')
   const [theme, setTheme] = useState('light');
+
+  // Smart Auto-Hiding Header and Back to Top Progress state
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const lastScrollYRef = useRef(0);
 
   const debounceTimerRef = useRef(null);
 
@@ -57,6 +64,54 @@ export default function HomePage() {
     } catch (e) {
       console.error('Error reading theme preference:', e);
     }
+  }, []);
+
+  // Track scroll direction for smart auto-hiding header and calculate scroll progress
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+          // Calculate radial scroll progress (0 to 100%)
+          if (maxScroll > 0) {
+            const progress = Math.min(100, Math.max(0, (currentScrollY / maxScroll) * 100));
+            setScrollProgress(progress);
+          } else {
+            setScrollProgress(0);
+          }
+
+          // Show floating Back to Top button when scrolled past 220px
+          setShowBackToTop(currentScrollY > 220);
+
+          // Smart Header Auto-Hide:
+          // 1. Always keep header visible when near the top (<= 60px)
+          if (currentScrollY <= 60) {
+            setIsHeaderVisible(true);
+          } else {
+            const delta = currentScrollY - lastScrollYRef.current;
+            // 2. Hide when scrolling down past threshold
+            if (delta > 8) {
+              setIsHeaderVisible(false);
+            }
+            // 3. Show when scrolling up past threshold
+            else if (delta < -8) {
+              setIsHeaderVisible(true);
+            }
+          }
+
+          lastScrollYRef.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleLanguageChange = (newLang) => {
@@ -191,6 +246,7 @@ export default function HomePage() {
         onLanguageChange={handleLanguageChange}
         theme={theme}
         onThemeToggle={handleThemeToggle}
+        isVisible={isHeaderVisible}
         t={t}
       />
 
@@ -198,7 +254,9 @@ export default function HomePage() {
       <div
         role="tablist"
         aria-label="Form and Preview Views"
-        className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2 sticky top-[69px] z-40 flex gap-2 transition-colors shadow-xs"
+        className={`lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2 sticky z-40 flex gap-2 transition-all duration-300 shadow-xs ${
+          isHeaderVisible ? 'top-[69px]' : 'top-0'
+        }`}
       >
         <button
           role="tab"
@@ -324,6 +382,9 @@ export default function HomePage() {
           </p>
         </div>
       </footer>
+
+      {/* Floating Back to Top Button with Circular Scroll Progress */}
+      <BackToTopProgress scrollProgress={scrollProgress} isVisible={showBackToTop} />
     </div>
   );
 }

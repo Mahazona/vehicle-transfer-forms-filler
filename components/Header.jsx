@@ -26,6 +26,7 @@ export default function Header({
   onLanguageChange,
   theme = 'light',
   onThemeToggle,
+  isVisible = true,
   t
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -43,7 +44,9 @@ export default function Header({
   }, []);
 
   return (
-    <header className="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-md sticky top-0 z-50 transition-colors">
+    <header className={`bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white shadow-md sticky top-0 z-50 transition-transform duration-300 ease-in-out focus-within:translate-y-0 ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3.5">
           
