@@ -76,9 +76,6 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'z9IrJpZqu_7a6xs48xP1MY4HRtx8cFuOoA29e_Zf9J8',
-  },
 };
 
 const jsonLd = {

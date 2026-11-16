@@ -1,13 +1,18 @@
-node_modules
-.next
-.vercel
-dist
-__pycache__
-*.png
-test_output_*.pdf
-test_fixes.pdf
-test_sri_veh.pdf
-scratch_test_*
-Filled_*.pdf
+# Dependencies
+node_modules/
+
+# Next.js build & runtime
+.next/
+dist/
+.vercel/
+
+# Environment
 .env*.local
+
+# Logs and OS
+*.log
 .DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
