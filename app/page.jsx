@@ -11,7 +11,7 @@ import { generateFilledVehicleTransferPDF, printPdfBlobDirectly, downloadPdfBlob
 import { Edit3, Eye } from 'lucide-react';
 
 export default function HomePage() {
-  const [formData, setFormData] = useState(sriSampleData);
+  const [formData, setFormData] = useState(blankFormData);
   const [pageSelection, setPageSelection] = useState('all');
   const [previewUrl, setPreviewUrl] = useState(null);
   const [currentPdfBlob, setCurrentPdfBlob] = useState(null);
