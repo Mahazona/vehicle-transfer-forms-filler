@@ -92,6 +92,34 @@ export function splitTextInto3Rows(text, maxColsRow1, maxColsRow2, maxColsRow3) 
 }
 
 /**
+ * Format a person's name for tight single-line form spaces (e.g. One-Day Transfer declaration).
+ * In Sri Lanka, when form space is limited, standard practice is initials + last name:
+ * "WARNAKULASOORIYA MAHAWADUGE KASUN CHAMARA FERNANDO GUNAWARDANA"
+ * -> "W. M. K. C. F. GUNAWARDANA"
+ */
+export function formatShortName(fullName, maxLen = 26) {
+  if (!fullName) return '';
+  const trimmed = fullName.trim().replace(/\s+/g, ' ');
+  if (trimmed.length <= maxLen) return trimmed;
+
+  const parts = trimmed.split(' ');
+  if (parts.length <= 1) return trimmed.slice(0, maxLen);
+
+  const lastName = parts[parts.length - 1];
+  const initials = parts.slice(0, -1).map(p => p[0].toUpperCase() + '.');
+
+  // Standard spaced initials: "W. M. K. C. F. GUNAWARDANA"
+  const spaced = `${initials.join(' ')} ${lastName}`;
+  if (spaced.length <= 32) return spaced;
+
+  // Compact initials if very long: "W.M.K.C.F. GUNAWARDANA"
+  const compact = `${initials.join('')} ${lastName}`;
+  if (compact.length <= 32) return compact;
+
+  return compact.slice(0, 32);
+}
+
+/**
  * Draw characters inside grid boxes.
  * If longer than given boxes, it prints outside the boxes,
  * but safely stays within the page printable margin (maxX = 588 pt)!
@@ -222,7 +250,7 @@ export function drawPlainText(page, font, text, pos, options = {}) {
     const availWidth = pos.max_x - pos.x;
     let tw = font.widthOfTextAtSize(clean, fontSize);
     if (tw > availWidth) {
-      fontSize = Math.max(7.0, fontSize * (availWidth / tw));
+      fontSize = Math.max(6.0, fontSize * (availWidth / tw));
     }
   }
 
@@ -359,9 +387,10 @@ export async function generateFilledVehicleTransferPDF(formData, options = {}) {
       drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.tamil_veh, { fontSize: 7.5 });
       drawPlainText(p, font, parsedVeh.fullFormatted, c.one_day.english_veh, { fontSize: 8.5 });
 
-      let ownerDateStr = (formData.transferorName || '').toUpperCase().trim();
+      const shortName = formatShortName((formData.transferorName || '').toUpperCase().trim(), 26);
+      let ownerDateStr = shortName;
       if (hasDate) {
-        ownerDateStr = `${ownerDateStr}  |  ${formData.transferDate.trim()}`;
+        ownerDateStr = `${shortName}  |  ${formData.transferDate.trim()}`;
       }
       drawPlainText(p, font, ownerDateStr, c.one_day.name_date, { fontSize: 8.5 });
     }

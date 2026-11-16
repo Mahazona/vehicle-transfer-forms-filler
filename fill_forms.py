@@ -111,6 +111,31 @@ def split_text_into_3_rows(text, max1, max2, max3):
     r3 = " ".join(words2[idx2:])
     return r1, r2, r3
 
+def format_short_name(full_name, max_len=26):
+    """
+    Format a person's name for tight single-line form spaces (e.g. One-Day Transfer declaration).
+    In Sri Lanka, when form space is limited, standard practice is initials + last name:
+    'WARNAKULASOORIYA MAHAWADUGE KASUN CHAMARA FERNANDO GUNAWARDANA'
+    -> 'W. M. K. C. F. GUNAWARDANA'
+    """
+    if not full_name:
+        return ""
+    clean = " ".join(full_name.strip().split())
+    if len(clean) <= max_len:
+        return clean
+    parts = clean.split()
+    if len(parts) <= 1:
+        return clean[:max_len]
+    last_name = parts[-1]
+    initials = [p[0].upper() + "." for p in parts[:-1] if p]
+    spaced = " ".join(initials) + " " + last_name
+    if len(spaced) <= 32:
+        return spaced
+    compact = "".join(initials) + " " + last_name
+    if len(compact) <= 32:
+        return compact
+    return compact[:32]
+
 def draw_grid_text_safe(page, text, xs, y0, y1, fontname="helv", max_font=10.5, max_x=588.0):
     if not text or not xs or len(xs) < 2:
         return
@@ -172,7 +197,7 @@ def draw_plain_text_safe(page, text, x, y, max_x=None, fontname="helv", fontsize
     if max_x and max_x > x:
         tw = fitz.get_text_length(clean, fontname=fontname, fontsize=fontsize)
         if tw > (max_x - x):
-            fontsize = max(7.0, fontsize * ((max_x - x) / tw))
+            fontsize = max(6.0, fontsize * ((max_x - x) / tw))
     page.insert_text(fitz.Point(x, y), clean, fontname=fontname, fontsize=fontsize, color=(0, 0, 0))
 
 def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPLATE_PATH):
@@ -199,13 +224,13 @@ def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPL
 
     pages_mta6_cfg = [
         (0, 281.9, 300.3, 350.6, 407.8, 428.0, 480.1, 655.5, 819.2, 
-         (415, 652, 445, 685, 425, 751), (425, 782, 445, 816, 425, 859, 120, 860), (152, 918, 30, 927.5, 380, 937, 345, 962)),
+         (415, 652, 445, 685, 425, 751), (425, 782, 445, 816, 425, 859, 103, 857.8), (152, 918, 30, 927.5, 380, 937, 345, 963.8)),
         (2, 285.5, 304.5, 354.8, 412.0, 432.2, 484.2, 649.6, 819.1,
-         (415, 647, 445, 682, 425, 753), (425, 782, 445, 816, 425, 860, 120, 860), (152, 918, 30, 927.5, 380, 937, 345, 962)),
+         (415, 647, 445, 682, 425, 753), (425, 782, 445, 816, 425, 860, 103, 858.3), (152, 918, 30, 927.5, 380, 937, 345, 963.5)),
         (4, 274.8, 295.6, 345.9, 403.1, 424.5, 476.6, 642.1, 805.2,
-         (415, 640, 445, 669, 425, 734), (425, 768, 445, 803, 425, 843, 120, 844), (152, 901, 35, 912.5, 380, 923, 345, 948)),
+         (415, 640, 445, 669, 425, 734), (425, 768, 445, 803, 425, 843, 102, 841.5), (152, 901, 35, 912.5, 380, 923, 345, 948.8)),
         (6, 292.3, 312.6, 362.0, 418.1, 437.8, 488.8, 660.9, 815.6,
-         (390, 652, 410, 683, 400, 745), (400, 773, 410, 807, 400, 848, 118, 851), (150, 907, 30, 917.5, 370, 926, 340, 952))
+         (390, 652, 410, 683, 400, 745), (400, 773, 410, 807, 400, 848, 100, 849.3), (150, 907, 30, 917.5, 370, 926, 340, 952.5))
     ]
 
     xs_35_std = [48.6 + i * 15.12 for i in range(36)]
@@ -281,9 +306,10 @@ def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPL
             draw_plain_text_safe(p, parsed_veh["full"], od[2], od[3], fontsize=7.5)
             draw_plain_text_safe(p, parsed_veh["full"], od[4], od[5], fontsize=8.5)
 
-            owner_date = (data.get("transferorName") or "").upper().strip()
+            short_name = format_short_name((data.get("transferorName") or "").upper().strip(), 26)
+            owner_date = short_name
             if has_date:
-                owner_date = f"{owner_date}  |  {date_str}"
+                owner_date = f"{short_name}  |  {date_str}"
             draw_plain_text_safe(p, owner_date, od[6], od[7], max_x=575.0, fontsize=8.5)
 
     # Fill MTA 8 Pages: 8 (C) and 10 (C1)
