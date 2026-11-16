@@ -10,7 +10,7 @@ A free, easy-to-use web tool to auto-fill official **Department of Motor Traffic
 - **Supports All Number Plates:** Handles vintage numbers (e.g. `5 Sri 2525`, `19 Sri 1234`) and modern provincial plates (e.g. `WP CAA-4589`).
 - **Fits Long Sri Lankan Names:** Long ge-names automatically wrap and abbreviate into official initials + surname without spilling off the paper.
 - **"Open Papers" for Car Sales:** Optional toggle to keep dates blank for vehicle dealerships and brokers.
-- **100% Private & Secure:** All PDF processing happens inside your browser. No names, NIC numbers, or vehicle details are ever saved or uploaded to any server.
+- **100% Private & Secure:** Powered by `pdf-lib` running 100% client-side in browser memory. No backend server, zero analytics scripts, and strict Content Security Policy (CSP) blocking any outbound form leaks.
 - **Tri-Lingual Support:** Available in **English**, **සිංහල (Sinhala)**, and **தமிழ் (Tamil)** with Dark Mode.
 
 ---
