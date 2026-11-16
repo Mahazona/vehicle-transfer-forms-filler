@@ -37,6 +37,61 @@ export function splitTextIntoRows(text, maxColsRow1, maxColsRow2) {
 }
 
 /**
+ * Split text across up to 3 rows with intelligent word wrapping.
+ */
+export function splitTextInto3Rows(text, maxColsRow1, maxColsRow2, maxColsRow3) {
+  const clean = (text || '').trim();
+  if (!clean) return { row1: '', row2: '', row3: '' };
+
+  const words = clean.split(' ');
+  let r1 = '';
+  let r2 = '';
+  let r3 = '';
+
+  let idx = 0;
+  // Row 1
+  for (; idx < words.length; idx++) {
+    const w = words[idx];
+    const candidate = r1 ? `${r1} ${w}` : w;
+    if (candidate.length <= maxColsRow1) {
+      r1 = candidate;
+    } else {
+      break;
+    }
+  }
+
+  if (!r1 && idx < words.length) {
+    r1 = words[idx].slice(0, maxColsRow1);
+    words[idx] = words[idx].slice(maxColsRow1).trim();
+    if (!words[idx]) idx++;
+  }
+
+  // Row 2
+  for (; idx < words.length; idx++) {
+    const w = words[idx];
+    const candidate = r2 ? `${r2} ${w}` : w;
+    if (candidate.length <= maxColsRow2) {
+      r2 = candidate;
+    } else {
+      break;
+    }
+  }
+
+  if (!r2 && idx < words.length) {
+    r2 = words[idx].slice(0, maxColsRow2);
+    words[idx] = words[idx].slice(maxColsRow2).trim();
+    if (!words[idx]) idx++;
+  }
+
+  // Row 3 (all remaining words)
+  if (idx < words.length) {
+    r3 = words.slice(idx).join(' ');
+  }
+
+  return { row1: r1, row2: r2, row3: r3 };
+}
+
+/**
  * Draw characters inside grid boxes.
  * If longer than given boxes, it prints outside the boxes,
  * but safely stays within the page printable margin (maxX = 588 pt)!
@@ -56,8 +111,8 @@ export function drawGridTextSafe(page, font, text, gridDef, options = {}) {
   const totalLen = text.length;
 
   if (totalLen <= numCells) {
-    // Standard box centering
-    const baselineY = pageHeight - y1 + (boxHeight - maxFont) / 2 + 1.2;
+    // Mathematical vertical centering for capital letters (cap height ~ 0.718 * fontSize)
+    const baselineY = pageHeight - y1 + (boxHeight - 0.718 * maxFont) / 2;
     for (let i = 0; i < totalLen; i++) {
       const ch = text[i];
       const cx = (xs[i] + xs[i + 1]) / 2;
@@ -75,7 +130,7 @@ export function drawGridTextSafe(page, font, text, gridDef, options = {}) {
     const availWidth = maxX - xs[0];
     const pitch = Math.min(cellW, availWidth / totalLen);
     const fontSize = Math.min(maxFont, pitch * 0.95);
-    const baselineY = pageHeight - y1 + (boxHeight - fontSize) / 2 + 1.2;
+    const baselineY = pageHeight - y1 + (boxHeight - 0.718 * fontSize) / 2;
 
     for (let i = 0; i < totalLen; i++) {
       const ch = text[i];
@@ -112,7 +167,7 @@ export function drawVehicleNumberMta6(page, font, parsedVeh, pageConfig) {
     const { xs, y0, y1 } = gridDef;
     const numCells = xs.length - 1;
     const boxHeight = y1 - y0;
-    const baselineY = pageHeight - y1 + (boxHeight - fontSize) / 2 + 1.2;
+    const baselineY = pageHeight - y1 + (boxHeight - 0.718 * fontSize) / 2;
     const clean = text.trim();
 
     let indices = [];
@@ -330,35 +385,36 @@ export async function generateFilledVehicleTransferPDF(formData, options = {}) {
       drawGridTextSafe(p, font, parsedVeh.mta8String, c.vehicle_number);
     }
 
-    // Transferor Name (Row 1: 26, Row 2: 34)
+    // Transferor Name: Row 2 (27 cells beside 'Previously registered'), Row 3 (35 cells)
     const mta8TransfName = splitTextIntoRows(
       (formData.transferorName || '').toUpperCase(),
-      26,
-      34
+      27,
+      35
     );
     drawGridTextSafe(p, font, mta8TransfName.row1, c.transferor_name_1);
     drawGridTextSafe(p, font, mta8TransfName.row2, c.transferor_name_2);
 
-    // Transferor Address (Row 1: 33, Row 2: 35)
-    const addr1 = splitTextIntoRows(
-      (formData.transferorAddress || '').toUpperCase(),
-      33,
-      35
-    );
-    drawGridTextSafe(p, font, addr1.row1, c.transferor_address_1);
-    drawGridTextSafe(p, font, addr1.row2, c.transferor_address_2);
-
-    // Transferee Name (Row 1: 31, Row 2: 35)
-    const mta8BuyerName = splitTextIntoRows(
+    // Transferee Name: Row 4 (33 cells beside 'to'), Row 5 (35 cells), Row 6 (35 cells above 'Name of Transferee')
+    const mta8BuyerName = splitTextInto3Rows(
       (formData.transfereeName || '').toUpperCase(),
-      31,
+      33,
+      35,
       35
     );
     drawGridTextSafe(p, font, mta8BuyerName.row1, c.transferee_name_1);
     drawGridTextSafe(p, font, mta8BuyerName.row2, c.transferee_name_2);
+    drawGridTextSafe(p, font, mta8BuyerName.row3, c.transferee_name_3);
 
-    // Transferee Address
-    drawGridTextSafe(p, font, buyerAddrRows.row1, c.transferee_address_1);
+    // Transferee Address: Row 7 (31 cells beside 'residing at'), Row 8 (35 cells), Row 9 (35 cells above 'Address of Transferee')
+    const mta8BuyerAddr = splitTextInto3Rows(
+      (formData.transfereeAddress || '').toUpperCase(),
+      31,
+      35,
+      35
+    );
+    drawGridTextSafe(p, font, mta8BuyerAddr.row1, c.transferee_address_1);
+    drawGridTextSafe(p, font, mta8BuyerAddr.row2, c.transferee_address_2);
+    drawGridTextSafe(p, font, mta8BuyerAddr.row3, c.transferee_address_3);
 
     // Transferee NIC
     drawGridTextSafe(p, font, (formData.transfereeNic || '').toUpperCase().trim(), c.transferee_nic);

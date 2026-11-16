@@ -81,6 +81,36 @@ def split_text_into_rows(text, max_row1, max_row2):
         r2 = text[max_row1:].strip()
     return r1, r2
 
+def split_text_into_3_rows(text, max1, max2, max3):
+    text = (text or "").strip()
+    if not text:
+        return "", "", ""
+    words = text.split(" ")
+    r1, r2, r3 = "", "", ""
+    idx = 0
+    for idx, w in enumerate(words):
+        cand = f"{r1} {w}" if r1 else w
+        if len(cand) <= max1:
+            r1 = cand
+        else:
+            break
+    else:
+        return r1, "", ""
+    
+    words2 = words[idx:]
+    idx2 = 0
+    for idx2, w in enumerate(words2):
+        cand = f"{r2} {w}" if r2 else w
+        if len(cand) <= max2:
+            r2 = cand
+        else:
+            break
+    else:
+        return r1, r2, ""
+    
+    r3 = " ".join(words2[idx2:])
+    return r1, r2, r3
+
 def draw_grid_text_safe(page, text, xs, y0, y1, fontname="helv", max_font=10.5, max_x=588.0):
     if not text or not xs or len(xs) < 2:
         return
@@ -243,52 +273,104 @@ def fill_forms(data, output_pdf="filled_transfer_forms.pdf", template_path=TEMPL
         if pno >= len(doc):
             continue
         p = doc[pno]
-        y_off = 0 if pno == 8 else -18.8
 
-        if parsed_veh.get("mta8"):
-            p9_vxs = [434.4 + i * 16.08 for i in range(11)]
-            draw_grid_text_safe(p, parsed_veh["mta8"], p9_vxs, 356.7 + y_off, 379.3 + y_off)
+        if pno == 8:
+            # Page 9 exact grid
+            v_xs = [434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            t1_xs = [160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9, 354.0, 370.0, 386.1, 402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            t2_xs = [26.6, 42.7, 62.0, 78.1, 96.6, 112.7, 128.8, 144.9, 160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9, 354.0, 370.0, 386.1, 402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            bn1_xs = [62.0, 78.1, 96.6, 112.7, 128.8, 144.9, 160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9, 354.0, 370.0, 386.1, 402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            ba1_xs = [96.6, 112.7, 128.8, 144.9, 160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9, 354.0, 370.0, 386.1, 402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            nic_xs = [418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            post_xs = [177.0, 193.1, 209.2, 225.3, 241.4, 257.5]
+            mob_xs = [434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            ds_xs = [160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9]
+            dist_xs = [402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1, 592.8]
+            prov_xs = [96.6, 112.7, 128.8, 144.9, 160.9, 177.0, 193.1, 209.2, 225.3, 241.4, 257.5, 273.5, 289.6, 305.7, 321.8, 337.9]
+            d_xs = [354.0, 370.0, 386.1]
+            m_xs = [418.3, 434.4, 450.5]
+            y_xs = [482.6, 498.7, 514.8, 530.9, 547.0]
+            pref_xs = [337.9, 354.0, 370.0, 386.1, 402.2, 418.3, 434.4, 450.5, 466.5, 482.6, 498.7, 514.8, 530.9, 547.0, 563.0, 579.1]
 
-        m8_t1, m8_t2 = split_text_into_rows((data.get("transferorName") or "").upper(), 26, 34)
-        t1_xs = [160.9 + i * 16.08 for i in range(27)]
-        t2_xs = [26.6 + i * 16.08 for i in range(35)]
-        draw_grid_text_safe(p, m8_t1, t1_xs, 392.9 + y_off, 415.5 + y_off)
-        draw_grid_text_safe(p, m8_t2, t2_xs, 422.6 + y_off, 445.1 + y_off)
+            if parsed_veh.get("mta8"):
+                draw_grid_text_safe(p, parsed_veh["mta8"], v_xs, 356.8, 378.5)
 
-        a1_xs = [62.0 + i * 16.1 for i in range(34)]
-        draw_grid_text_safe(p, transf_addr_1, a1_xs, 455.1 + y_off, 477.6 + y_off)
-        draw_grid_text_safe(p, transf_addr_2, t2_xs, 481.1 + y_off, 503.7 + y_off)
+            m8_t1, m8_t2 = split_text_into_rows((data.get("transferorName") or "").upper(), 27, 35)
+            draw_grid_text_safe(p, m8_t1, t1_xs, 393.0, 414.7)
+            draw_grid_text_safe(p, m8_t2, t2_xs, 422.6, 444.3)
 
-        m8_b1, m8_b2 = split_text_into_rows((data.get("transfereeName") or "").upper(), 31, 35)
-        b1_xs = [96.6 + i * 16.08 for i in range(32)]
-        draw_grid_text_safe(p, m8_b1, b1_xs, 541.1 + y_off, 563.7 + y_off)
-        draw_grid_text_safe(p, m8_b2, t2_xs, 567.9 + y_off, 590.6 + y_off)
+            m8_b1, m8_b2, m8_b3 = split_text_into_3_rows((data.get("transfereeName") or "").upper(), 33, 35, 35)
+            draw_grid_text_safe(p, m8_b1, bn1_xs, 455.2, 476.9)
+            draw_grid_text_safe(p, m8_b2, t2_xs, 481.2, 502.9)
+            draw_grid_text_safe(p, m8_b3, t2_xs, 508.0, 529.7)
 
-        draw_grid_text_safe(p, buyer_addr_1, t2_xs, 594.0 + y_off, 616.6 + y_off)
+            m8_a1, m8_a2, m8_a3 = split_text_into_3_rows((data.get("transfereeAddress") or "").upper(), 31, 35, 35)
+            draw_grid_text_safe(p, m8_a1, ba1_xs, 541.2, 562.9)
+            draw_grid_text_safe(p, m8_a2, t2_xs, 568.0, 589.7)
+            draw_grid_text_safe(p, m8_a3, t2_xs, 594.0, 615.7)
 
-        bnic_xs = [418.3 + i * 16.08 for i in range(12)]
-        draw_grid_text_safe(p, buyer_nic, bnic_xs, 638.1 + y_off, 660.1 + y_off)
+            draw_grid_text_safe(p, buyer_nic, nic_xs, 638.2, 659.2)
+            draw_grid_text_safe(p, (data.get("transfereePostalCode") or "").strip(), post_xs, 670.0, 691.7)
+            draw_grid_text_safe(p, (data.get("transfereeMobile") or "").replace(" ", ""), mob_xs, 670.0, 691.7)
+            draw_grid_text_safe(p, (data.get("divisionalSecretariat") or "").upper().strip(), ds_xs, 719.9, 743.1)
+            draw_grid_text_safe(p, (data.get("district") or "").upper().strip(), dist_xs, 719.9, 743.1)
+            draw_grid_text_safe(p, (data.get("province") or "").upper().strip(), prov_xs, 748.1, 769.8)
 
-        post_xs = [177.0 + i * 16.1 for i in range(6)]
-        mob_xs = [434.4 + i * 16.1 for i in range(11)]
-        draw_grid_text_safe(p, (data.get("transfereePostalCode") or "").strip(), post_xs, 669.9 + y_off, 692.6 + y_off)
-        draw_grid_text_safe(p, (data.get("transfereeMobile") or "").replace(" ", ""), mob_xs, 669.9 + y_off, 692.6 + y_off)
+            if has_date:
+                draw_grid_text_safe(p, day, d_xs, 774.9, 796.6)
+                draw_grid_text_safe(p, month, m_xs, 774.9, 796.6)
+                draw_grid_text_safe(p, year, y_xs, 774.9, 796.6)
 
-        ds_xs = [160.9 + i * 16.08 for i in range(12)]
-        dist_xs = [402.2 + i * 16.08 for i in range(13)]
-        draw_grid_text_safe(p, (data.get("divisionalSecretariat") or "").upper().strip(), ds_xs, 719.8 + y_off, 744.0 + y_off)
-        draw_grid_text_safe(p, (data.get("district") or "").upper().strip(), dist_xs, 719.8 + y_off, 744.0 + y_off)
+            draw_grid_text_safe(p, (data.get("preferredOffice") or "").upper().strip(), pref_xs, 830.7, 849.5)
 
-        prov_xs = [96.6 + i * 16.08 for i in range(16)]
-        draw_grid_text_safe(p, (data.get("province") or "").upper().strip(), prov_xs, 748.1 + y_off, 770.7 + y_off)
+        else:
+            # Page 11 exact grid (Form C1)
+            v_xs = [433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            t1_xs = [160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1, 353.2, 369.3, 385.4, 401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            t2_xs = [26.6, 42.7, 62.0, 78.1, 95.9, 112.0, 128.1, 144.1, 160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1, 353.2, 369.3, 385.4, 401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            bn1_xs = [62.0, 78.1, 95.9, 112.0, 128.1, 144.1, 160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1, 353.2, 369.3, 385.4, 401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            ba1_xs = [95.9, 112.0, 128.1, 144.1, 160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1, 353.2, 369.3, 385.4, 401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            nic_xs = [417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            post_xs = [176.3, 192.4, 208.5, 224.6, 240.6, 256.7]
+            mob_xs = [433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            ds_xs = [160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1]
+            dist_xs = [401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4, 594.5]
+            prov_xs = [95.9, 112.0, 128.1, 144.1, 160.2, 176.3, 192.4, 208.5, 224.6, 240.6, 256.7, 272.8, 288.9, 305.0, 321.0, 337.1]
+            d_xs = [353.2, 369.3, 385.4]
+            m_xs = [417.5, 433.7, 449.7]
+            y_xs = [481.9, 498.0, 514.1, 530.1, 546.2]
+            pref_xs = [337.1, 353.2, 369.3, 385.4, 401.5, 417.5, 433.7, 449.7, 465.8, 481.9, 498.0, 514.1, 530.1, 546.2, 562.3, 578.4]
 
-        if has_date:
-            draw_grid_text_safe(p, day, [353.9, 373.2, 392.5], 774.8 + y_off, 797.5 + y_off)
-            draw_grid_text_safe(p, month, [427.5, 446.8, 466.1], 774.8 + y_off, 797.5 + y_off)
-            draw_grid_text_safe(p, year, [500.5, 519.8, 539.1, 558.4, 577.7], 774.8 + y_off, 797.5 + y_off)
+            if parsed_veh.get("mta8"):
+                draw_grid_text_safe(p, parsed_veh["mta8"], v_xs, 337.9, 359.6)
 
-        pref_xs = [337.9 + i * 16.08 for i in range(16)]
-        draw_grid_text_safe(p, (data.get("preferredOffice") or "").upper().strip(), pref_xs, 830.6 + y_off, 850.4 + y_off)
+            m8_t1, m8_t2 = split_text_into_rows((data.get("transferorName") or "").upper(), 27, 35)
+            draw_grid_text_safe(p, m8_t1, t1_xs, 374.2, 395.9)
+            draw_grid_text_safe(p, m8_t2, t2_xs, 403.8, 425.5)
+
+            m8_b1, m8_b2, m8_b3 = split_text_into_3_rows((data.get("transfereeName") or "").upper(), 33, 35, 35)
+            draw_grid_text_safe(p, m8_b1, bn1_xs, 436.3, 458.0)
+            draw_grid_text_safe(p, m8_b2, t2_xs, 462.3, 484.1)
+            draw_grid_text_safe(p, m8_b3, t2_xs, 489.1, 510.8)
+
+            m8_a1, m8_a2, m8_a3 = split_text_into_3_rows((data.get("transfereeAddress") or "").upper(), 31, 35, 35)
+            draw_grid_text_safe(p, m8_a1, ba1_xs, 522.3, 544.1)
+            draw_grid_text_safe(p, m8_a2, t2_xs, 549.1, 570.8)
+            draw_grid_text_safe(p, m8_a3, t2_xs, 575.2, 596.9)
+
+            draw_grid_text_safe(p, buyer_nic, nic_xs, 619.3, 640.3)
+            draw_grid_text_safe(p, (data.get("transfereePostalCode") or "").strip(), post_xs, 651.1, 672.8)
+            draw_grid_text_safe(p, (data.get("transfereeMobile") or "").replace(" ", ""), mob_xs, 651.1, 672.8)
+            draw_grid_text_safe(p, (data.get("divisionalSecretariat") or "").upper().strip(), ds_xs, 701.0, 724.2)
+            draw_grid_text_safe(p, (data.get("district") or "").upper().strip(), dist_xs, 701.0, 724.2)
+            draw_grid_text_safe(p, (data.get("province") or "").upper().strip(), prov_xs, 729.3, 751.0)
+
+            if has_date:
+                draw_grid_text_safe(p, day, d_xs, 756.0, 777.8)
+                draw_grid_text_safe(p, month, m_xs, 756.0, 777.8)
+                draw_grid_text_safe(p, year, y_xs, 756.0, 777.8)
+
+            draw_grid_text_safe(p, (data.get("preferredOffice") or "").upper().strip(), pref_xs, 811.8, 826.4)
 
         if back_pno < len(doc) and has_date:
             draw_plain_text_safe(doc[back_pno], date_str, 105, 636)
