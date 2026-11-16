@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://srilanka-vehicle-transfer.vercel.app';
@@ -145,6 +146,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased min-h-screen transition-colors duration-200">
         {children}
+        <Analytics />
       </body>
     </html>
   );
