@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Printer, 
   Download, 
@@ -10,7 +10,10 @@ import {
   AlertCircle, 
   FileCheck2,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Eye,
+  FileText,
+  Smartphone
 } from 'lucide-react';
 
 export default function PdfPreview({
@@ -24,6 +27,32 @@ export default function PdfPreview({
   t
 }) {
   const p = t?.preview || {};
+  const [isMobile, setIsMobile] = useState(false);
+  const [forceIframe, setForceIframe] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const ua = typeof navigator !== 'undefined' ? (navigator.userAgent || '') : '';
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      setIsMobile(mobileRegex.test(ua) || (typeof window !== 'undefined' && window.innerWidth < 1024));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const getFormTitle = () => {
+    switch (pageSelection) {
+      case 'mta6a':
+        return p.optMta6a || "Form MTA 6A & A1 (2 Pages)";
+      case 'mta6b':
+        return p.optMta6b || "Form MTA 6B & B1 (4 Pages)";
+      case 'mta8':
+        return p.optMta8 || "Form MTA 8 / CMT 8 (4 Pages)";
+      default:
+        return p.optAll || "Complete Transfer Set (Clean 10 Pages)";
+    }
+  };
 
   return (
     <aside 
@@ -152,11 +181,94 @@ export default function PdfPreview({
         ) : null}
 
         {previewUrl ? (
-          <iframe
-            src={`${previewUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-            title="Vehicle Transfer Form Live Preview"
-            className="w-full flex-1 border-0 bg-white shadow-inner"
-          />
+          isMobile && !forceIframe ? (
+            /* Mobile-Optimized Viewer Hub (avoids Android Chromium iframe block) */
+            <div className="flex-1 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 overflow-y-auto">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 shadow-xs">
+                <FileText className="w-8 h-8" aria-hidden="true" />
+              </div>
+
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 mb-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                Forms Ready for Submission
+              </span>
+
+              <h4 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight">
+                {getFormTitle()}
+              </h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 max-w-xs leading-relaxed">
+                Generated with vector alignment directly in your browser memory.
+              </p>
+
+              {/* Big Action Button for Mobile */}
+              <div className="w-full max-w-xs mt-6 space-y-3">
+                <a
+                  href={previewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full min-h-[46px] py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+                >
+                  <Eye className="w-4 h-4" />
+                  <span>Open Full PDF in Mobile Viewer</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                </a>
+
+                <div className="grid grid-cols-2 gap-2.5">
+                  <button
+                    type="button"
+                    onClick={onPrint}
+                    className="flex items-center justify-center min-h-[42px] px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition-all cursor-pointer"
+                  >
+                    <Printer className="w-4 h-4 mr-1.5" />
+                    Print
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onDownload}
+                    className="flex items-center justify-center min-h-[42px] px-3 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white shadow-xs transition-all cursor-pointer"
+                  >
+                    <Download className="w-4 h-4 mr-1.5" />
+                    Download
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 text-[11px] text-slate-400 dark:text-slate-500 flex flex-col items-center gap-2">
+                <span className="flex items-center gap-1.5">
+                  <Smartphone className="w-3.5 h-3.5 text-slate-400" />
+                  Tap &quot;Open Full PDF&quot; to inspect all pages with pinch-to-zoom
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setForceIframe(true)}
+                  className="text-blue-600 dark:text-blue-400 hover:underline text-[10px] cursor-pointer"
+                >
+                  (Try embedded browser frame instead)
+                </button>
+              </div>
+            </div>
+          ) : (
+            /* Desktop / Forced Embedded Iframe */
+            <div className="flex-1 flex flex-col relative w-full h-full">
+              <div className="px-3 py-1.5 bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                <span className="truncate">Live Vector PDF Preview</span>
+                <a
+                  href={previewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+                >
+                  <span>Open Fullscreen</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+              <iframe
+                src={`${previewUrl}#toolbar=0&navpanes=0&scrollbar=1`}
+                title="Vehicle Transfer Form Live Preview"
+                className="w-full flex-1 border-0 bg-white shadow-inner"
+              />
+            </div>
+          )
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center p-6 text-center text-slate-400 dark:text-slate-500">
             <AlertCircle className="w-10 h-10 mb-2 text-slate-400 dark:text-slate-600" aria-hidden="true" />
