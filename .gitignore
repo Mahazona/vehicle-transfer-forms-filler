@@ -1,0 +1,13 @@
+node_modules
+.next
+.vercel
+dist
+__pycache__
+*.png
+test_output_*.pdf
+test_fixes.pdf
+test_sri_veh.pdf
+scratch_test_*
+Filled_*.pdf
+.env*.local
+.DS_Store

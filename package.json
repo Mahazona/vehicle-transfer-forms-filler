@@ -1,0 +1,26 @@
+{
+  "name": "sri-lanka-vehicle-transfer-forms-filler",
+  "version": "2.0.0",
+  "description": "Sri Lanka Vehicle Transfer Forms (MTA 6A, 6B, MTA 8) Auto-Filler and Print Application - Next.js & Vercel Ready",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lucide-react": "^1.73.0",
+    "next": "^16.4.6",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^4.3.5"
+  }
+}
