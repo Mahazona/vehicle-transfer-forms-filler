@@ -11,7 +11,8 @@ import {
   Moon, 
   Sun, 
   Globe,
-  ChevronDown
+  ChevronDown,
+  BookOpen
 } from 'lucide-react';
 
 export default function Header({ 
@@ -70,6 +71,24 @@ export default function Header({
           {/* Action Bar & Controls */}
           <div className="flex items-center flex-wrap gap-2 sm:gap-2.5">
             
+            {/* Guide & Documents Navigation Anchor Link */}
+            <a
+              href="#instructions"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('instructions');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              aria-label={t?.nav?.guide || "Guide & Documents"}
+              className="inline-flex items-center min-h-[38px] px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-blue-300 hover:text-white border border-slate-700 hover:border-blue-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all shadow-xs cursor-pointer"
+              title="Jump to complete instructions, checklist & rules"
+            >
+              <BookOpen className="w-3.5 h-3.5 mr-1.5 text-blue-400" aria-hidden="true" />
+              <span>{t?.nav?.guide || "Guide & Documents"}</span>
+            </a>
+
             {/* Try Sample Data Dropdown with full explanatory options */}
             <div className="relative" ref={dropdownRef}>
               <button

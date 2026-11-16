@@ -13,6 +13,7 @@ export const translations = {
       title: "Sri Lanka Vehicle Transfer Forms Filler",
       subtitle: "Official DMT Transfer Forms MTA 6A, 6B & MTA 8 | Clean 10-Page Export",
       badge: "MTA 6 & 8 Ready",
+      guide: "Guide & Documents",
       samplesMenu: "Try Sample Data",
       demoSri: "Vintage Sri (5 Sri 2525)",
       demoModern: "Modern Plate (WP CAA-4589)",
@@ -150,6 +151,105 @@ export const translations = {
       title: "Sri Lanka Department of Motor Traffic (DMT) Vehicle Transfer Forms Filler",
       subtitle: "Official Forms MTA 6A, MTA 6B & MTA 8 (Form C & C1) | Clean 10-Page Output",
       disclaimer: "Civic tool built for Sri Lankan vehicle buyers, sellers, and auto dealers. All official forms must be submitted to DMT / RMV district offices.",
+    },
+    guide: {
+      navLink: "Guide & Documents",
+      badge: "Department of Motor Traffic (DMT / RMV) Procedure",
+      title: "Vehicle Transfer Instructions & Required Documents Checklist",
+      subtitle: "Complete step-by-step guidance, mandatory paperwork, and official DMT guidelines for motor vehicle ownership transfer in Sri Lanka.",
+      
+      tabAll: "All Guide",
+      tabSteps: "How To Do It (Steps)",
+      tabDocs: "Required Documents",
+      tabServices: "Normal vs One-Day Service",
+      tabRules: "Important Deadlines & Penalties",
+
+      // Steps
+      stepsTitle: "Step-by-Step Vehicle Transfer Procedure",
+      stepsSubtitle: "Follow these 5 official steps to complete your vehicle ownership transfer without hassle or unexpected delays:",
+      step1Num: "1",
+      step1Title: "Fill & Download Official Forms Online",
+      step1Desc: "Enter the seller, buyer, vehicle registration number, and witness details in this tool. Download the clean, auto-aligned 10-page PDF containing Forms MTA 6A, MTA 6B, and MTA 8 (Form C & C1). Print on standard A4 paper.",
+      step2Num: "2",
+      step2Title: "Sign with Blue/Black Pen & Add 2 Witnesses",
+      step2Desc: "Transferor (seller) signs MTA 6 Parts A, A1, B, and B1. Transferee (buyer) signs MTA 8 (Form C & C1). Obtain 2 witnesses with their full names, addresses, and NIC numbers. Signatures are intentionally left blank online for your physical security.",
+      step3Num: "3",
+      step3Title: "Send Form MTA 6A & A1 to Commissioner General",
+      step3Desc: "CRITICAL: Within 14 days of the date of transfer, the seller must send Form MTA 6A & A1 by registered post to the Commissioner General of Motor Traffic (P.O. Box 533, Colombo) or hand it over at the DMT office.",
+      step4Num: "4",
+      step4Title: "Gather Original Documents & Certified Copies",
+      step4Desc: "Collect the original Certificate of Registration (CR / 'Vehicle Book'), valid Revenue License with 1 photocopy, certified photocopies of both parties' NICs, and finance clearance (CMT 63) if applicable.",
+      step5Num: "5",
+      step5Title: "Submit MTA 8 & MTA 6B at DMT Office & Pay Fees",
+      step5Desc: "The buyer submits Form MTA 8 along with MTA 6B and supporting documents to DMT Narahenpita (for One-Day Service) or their local District Secretariat (for Normal Service). Pay the transfer fee and receive the updated CR.",
+
+      // Documents Checklist
+      docsTitle: "Mandatory & Conditional Documents Checklist",
+      docsSubtitle: "Review this checklist to ensure you have every required document before visiting the DMT / RMV office:",
+      mandatoryBadge: "Mandatory",
+      conditionalBadge: "Conditional",
+      oneDayBadge: "One-Day Service Only",
+
+      doc1Title: "MTA 6 Forms (Parts A, A1, B, B1)",
+      doc1Desc: "Notice of Transfer of Motor Vehicle. Signed by both transferor and transferee with two valid witnesses.",
+      doc1Tag: "Mandatory",
+
+      doc2Title: "MTA 8 Forms (Form C & C1)",
+      doc2Desc: "Application for Registration on Transfer of Ownership. Signed by the transferee (buyer) with selected plate collection office.",
+      doc2Tag: "Mandatory",
+
+      doc3Title: "Original Certificate of Registration (CR)",
+      doc3Desc: "The official vehicle registration book issued by DMT. Must be undamaged and must not be laminated.",
+      doc3Tag: "Mandatory",
+
+      doc4Title: "Current Revenue License + 1 Clear Photocopy",
+      doc4Desc: "Original valid provincial revenue license for the vehicle, plus one clear photocopy.",
+      doc4Tag: "Mandatory",
+
+      doc5Title: "Certified Copies of NICs (Both Parties)",
+      doc5Desc: "Photocopies of the National Identity Cards of both seller and buyer, certified by a Justice of Peace (JP) or authorized officer.",
+      doc5Tag: "Mandatory",
+
+      doc6Title: "Finance / Leasing Deletion Letter (CMT 63)",
+      doc6Desc: "If the vehicle is under absolute ownership, a clearance letter and Form CMT 63 from the finance company or bank.",
+      doc6Tag: "Conditional",
+
+      doc7Title: "Vehicle Weight Certificate (CMT 130)",
+      doc7Desc: "Required for dual-purpose vehicles, vans, lorries, trucks, buses, and commercial transport vehicles.",
+      doc7Tag: "Conditional",
+
+      doc8Title: "One-Day Express Declaration & Consent Affidavit",
+      doc8Desc: "For One-Day express service at Narahenpita: Both parties must attend in person with original NICs, OR the seller must supply a sworn affidavit certified by a JP.",
+      doc8Tag: "One-Day Service Only",
+
+      // Services Comparison
+      servicesTitle: "Normal Service vs. One-Day Express Service",
+      servicesSubtitle: "Choose the service option that fits your urgency and location:",
+      normalTitle: "Normal Transfer Service (සාමාන්‍ය සේවය)",
+      normalTime: "2 to 4 Weeks",
+      normalLocation: "Any DMT District Office or Narahenpita Head Office",
+      normalDesc: "Economical and convenient for vehicle owners outside the Western Province. You can submit documents at your local District Secretariat.",
+      normalPt1: "Standard government transfer fees (approx Rs. 1,500 - Rs. 4,500 depending on vehicle class)",
+      normalPt2: "New Certificate of Registration posted directly to the buyer's permanent address",
+      normalPt3: "Seller does not have to travel to Colombo",
+
+      oneDayTitle: "One-Day Transfer Service (එක් දින සේවාව)",
+      oneDayTime: "Same Day (2 - 4 Hours)",
+      oneDayLocation: "Exclusively at DMT Head Office, Narahenpita (Colombo)",
+      oneDayDesc: "Fast-track transfer service providing same-day ownership registration and printed CR book on the spot.",
+      oneDayPt1: "Express government fee (standard fee + approx Rs. 1,000 - Rs. 3,000 express surcharge)",
+      oneDayPt2: "Requires 'One-Day Transfer Service Consent' filled on Form MTA 6 (supported in this tool)",
+      oneDayPt3: "Both buyer and seller must be present with original NICs, or seller must provide JP-certified affidavit",
+
+      // Rules & Penalties
+      rulesTitle: "Crucial DMT Legal Deadlines & Late Penalties",
+      rulesSubtitle: "Avoid unnecessary fines and legal complications by keeping these rules in mind:",
+      rule1Title: "14-Day Submission Rule (Strictly Enforced)",
+      rule1Desc: "Under Section 12 of the Motor Traffic Act, Form MTA 6 must be delivered to the DMT within 14 days of the transfer date. Delays attract escalating monthly penalty fines.",
+      rule2Title: "Open Papers (Car Dealerships & Brokers)",
+      rule2Desc: "If a vehicle is sold to a broker or dealer without an immediate end buyer, the transfer date is often kept blank ('Open Papers'). This prevents the 14-day clock from triggering until the ultimate buyer signs.",
+      rule3Title: "Ink Signatures & Physical Verification",
+      rule3Desc: "DMT officers reject forms with typed or printed signatures. All copies must be signed with a physical pen. Keep your Certificate of Registration safe and unlaminated.",
     }
   },
 
@@ -158,6 +258,7 @@ export const translations = {
       title: "ශ්‍රී ලංකා මෝටර් රථ පැවරුම් පත්‍ර පිරවුම් පද්ධතිය",
       subtitle: "මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුවේ නිල ආකෘති පත්‍ර MTA 6A, 6B සහ MTA 8 | පිරිසිදු පිටු 10ක මුද්‍රණය",
       badge: "MTA 6 & 8 සූදානම්",
+      guide: "මාර්ගෝපදේශ සහ ලේඛන",
       samplesMenu: "ආදර්ශ දත්ත (Demo)",
       demoSri: "වින්ටේජ් ශ්‍රී (5 ශ්‍රී 2525)",
       demoModern: "නවීන අංකය (WP CAA-4589)",
@@ -295,6 +396,105 @@ export const translations = {
       title: "ශ්‍රී ලංකා මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුවේ (DMT / RMV) වාහන පැවරුම් ආකෘති පත්‍ර පිරවුම් පද්ධතිය",
       subtitle: "නිල ආකෘති පත්‍ර MTA 6A, MTA 6B සහ MTA 8 (ආකෘති C සහ C1) | පිරිසිදු පිටු 10ක මුද්‍රණය",
       disclaimer: "ශ්‍රී ලාංකික වාහන ගැනුම්කරුවන්, විකුණුම්කරුවන් සහ කාර් සේල්ස් හිමියන් සඳහා සැකසූ නොමිලේ මහජන සේවාවකි.",
+    },
+    guide: {
+      navLink: "මාර්ගෝපදේශ සහ ලේඛන",
+      badge: "මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුවේ (DMT / RMV) නිල ක්‍රියාපටිපාටිය",
+      title: "වාහන පැවරීමේ සම්පූර්ණ උපදෙස් සහ අවශ්‍ය ලියකියවිලි ලැයිස්තුව",
+      subtitle: "මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුව (DMT / RMV) වෙත යාමට පෙර ඔබ දැනගත යුතු පියවර, අවශ්‍ය ලියකියවිලි සහ නීති රීති.",
+      
+      tabAll: "සම්පූර්ණ මගපෙන්වීම",
+      tabSteps: "පියවරෙන් පියවර උපදෙස්",
+      tabDocs: "අවශ්‍ය ලියකියවිලි",
+      tabServices: "සාමාන්‍ය vs එක් දින සේවාව",
+      tabRules: "දඩ මුදල් සහ නීති",
+
+      // Steps
+      stepsTitle: "වාහනයක් පවරන නිල පියවර 5",
+      stepsSubtitle: "කිසිදු ප්‍රමාදයකින් හෝ ගැටලුවකින් තොරව වාහන හිමිකම පැවරීම සඳහා මෙම නිල පියවර අනුගමනය කරන්න:",
+      step1Num: "1",
+      step1Title: "පෝරම මාර්ගගතව පුරවා බාගත කරන්න",
+      step1Desc: "පැවරීම්කරු, පැවරීම්ලාභියා, වාහන අංකය සහ සාක්ෂිකරුවන්ගේ තොරතුරු මෙහි ඇතුළත් කරන්න. MTA 6A, MTA 6B සහ MTA 8 ඇතුළත් පිරිසිදු පිටු 10ක PDF එක බාගත කර A4 කඩදාසිවල මුද්‍රණය කරගන්න.",
+      step2Num: "2",
+      step2Title: "පෑනෙන් අත්සන් කර සාක්ෂිකරුවන් 2ක් යොදන්න",
+      step2Desc: "පැවරීම්කරු (විකුණන්නා) MTA 6 හි A, A1, B, B1 කොටස් අත්සන් කළ යුතුය. පැවරීම්ලාභියා (ගැණුම්කරු) MTA 8 අත්සන් කළ යුතුය. ජාතික හැඳුනුම්පත් අංක සහිත සාක්ෂිකරුවන් දෙදෙනෙකුගේ අත්සන් ලබාගන්න. (අත්සන් ආරක්ෂාව සඳහා මෙහි හිස්ව තබා ඇත).",
+      step3Num: "3",
+      step3Title: "MTA 6A සහ A1 කොමසාරිස් ජනරාල් වෙත යවන්න",
+      step3Desc: "අතිශය වැදගත්: පැවරීමේ දින සිට දින 14ක් ඇතුළත MTA 6A සහ A1 ආකෘති පත්‍ර ලියාපදිංචි තැපෑලෙන් මෝටර් රථ ප්‍රවාහන කොමසාරිස් ජනරාල් වෙත යැවිය යුතුය (තැ.පෙ. 533, කොළඹ) හෝ කාර්යාලයට භාරදිය යුතුය.",
+      step4Num: "4",
+      step4Title: "මුල් ලියකියවිලි සහ සහතික කළ පිටපත් සූදානම් කරගන්න",
+      step4Desc: "වාහනයේ මුල් ලියාපදිංචි සහතිකය (CR / පොත), වලංගු ආදායම් බලපත්‍රය සහ ඡායා පිටපතක්, දෙපාර්ශවයේම ජා.හැ. සහතික කළ පිටපත් සහ ලීසිං අවසන් කිරීමේ ලිපිය (අදාළ නම්) එකතු කරගන්න.",
+      step5Num: "5",
+      step5Title: "DMT කාර්යාලයට භාරදී ගාස්තු ගෙවන්න",
+      step5Desc: "ගැණුම්කරු විසින් MTA 8, MTA 6B සහ අනෙකුත් ලියකියවිලි නාරාහේන්පිට ප්‍රධාන කාර්යාලයට (එක් දින සේවාව සඳහා) හෝ දිස්ත්‍රික් ලේකම් කාර්යාලයට (සාමාන්‍ය සේවාව සඳහා) භාරදී ගාස්තු ගෙවා නව ලියාපදිංචි සහතිකය ලබාගන්න.",
+
+      // Documents Checklist
+      docsTitle: "අනිවාර්ය සහ අමතර ලියකියවිලි ලැයිස්තුව",
+      docsSubtitle: "DMT කාර්යාලයට යාමට පෙර ඔබ සතුව පහත සඳහන් සියලුම ලේඛන ඇති බව තහවුරු කරගන්න:",
+      mandatoryBadge: "අනිවාර්යයි",
+      conditionalBadge: "අවශ්‍ය පරිදි",
+      oneDayBadge: "එක් දින සේවාවට පමණි",
+
+      doc1Title: "MTA 6 ආකෘති පත්‍ර (A, A1, B, B1 කොටස්)",
+      doc1Desc: "මෝටර් රථ පැවරීමේ නිවේදනය. පැවරීම්කරු සහ පැවරීම්ලාභියා යන දෙදෙනා සහ සාක්ෂිකරුවන් දෙදෙනා අත්සන් තැබිය යුතුය.",
+      doc1Tag: "අනිවාර්යයි",
+
+      doc2Title: "MTA 8 ආකෘති පත්‍රය (Form C & C1)",
+      doc2Desc: "පැවරීමකදී මෝටර් රථයක් ලියාපදිංචි කිරීමේ ඉල්ලුම් පත්‍රය. නව හිමිකරු (පැවරීම්ලාභියා) විසින් අත්සන් කළ යුතුය.",
+      doc2Tag: "අනිවාර්යයි",
+
+      doc3Title: "මුල් වාහන ලියාපදිංචි සහතිකය (CR / පොත)",
+      doc3Desc: "DMT වෙතින් නිකුත් කරන ලද මුල් සහතිකය. හානි නොවූ සහ ලැමිනේට් නොකළ එකක් විය යුතුය.",
+      doc3Tag: "අනිවාර්යයි",
+
+      doc4Title: "වලංගු ආදායම් බලපත්‍රය සහ ඡායා පිටපතක්",
+      doc4Desc: "වාහනය සඳහා වලංගු මුල් ආදායම් බලපත්‍රය සහ එහි පැහැදිලි ඡායා පිටපතක්.",
+      doc4Tag: "අනිවාර්යයි",
+
+      doc5Title: "ජාතික හැඳුනුම්පත් සහතික කළ පිටපත් (දෙදෙනාගේම)",
+      doc5Desc: "විකුණන්නා සහ ගැණුම්කරු යන දෙදෙනාගේම ජාතික හැඳුනුම්පත්වල සාමදාන විනිශ්චයකාරවරයෙකු (JP) ලවා සහතික කළ ඡායා පිටපත්.",
+      doc5Tag: "අනිවාර්යයි",
+
+      doc6Title: "ලීසිං / ණය නිදහස් කිරීමේ ලිපිය (CMT 63)",
+      doc6Desc: "වාහනය බැංකු ණයක් හෝ ලීසිං යටතේ පැවතියේ නම්, පරම අයිතිය අවලංගු කිරීම සඳහා අදාළ මුදල් ආයතනයෙන් ලබාගත් ලිපිය සහ CMT 63 පෝරමය.",
+      doc6Tag: "අවශ්‍ය පරිදි",
+
+      doc7Title: "බර සහතිකය (CMT 130)",
+      doc7Desc: "ද්විත්ව කාර්ය (Dual Purpose) වෑන්, ලොරි, ට්‍රක්, බස් සහ වාණිජ වාහන සඳහා අවශ්‍ය වේ.",
+      doc7Tag: "අවශ්‍ය පරිදි",
+
+      doc8Title: "එක් දින සේවාව සඳහා එකඟතා ලිපිය / දිවුරුම් ප්‍රකාශය",
+      doc8Desc: "නාරාහේන්පිට එක් දින සේවාව ලබාගැනීමට: දෙදෙනාම පෞද්ගලිකව මුල් හැඳුනුම්පත් සහිතව පැමිණිය යුතුය, නැතහොත් විකුණන්නාගේ JP සහතික කළ දිවුරුම් ප්‍රකාශයක් තිබිය යුතුය.",
+      doc8Tag: "එක් දින සේවාවට පමණි",
+
+      // Services Comparison
+      servicesTitle: "සාමාන්‍ය සේවය සහ එක් දින සේවය සංසන්දනය",
+      servicesSubtitle: "ඔබගේ හදිසි අවශ්‍යතාවය සහ ප්‍රදේශය අනුව සුදුසු සේවාව තෝරාගන්න:",
+      normalTitle: "සාමාන්‍ය සේවය (Normal Service)",
+      normalTime: "සති 2 සිට 4 දක්වා",
+      normalLocation: "ඕනෑම දිස්ත්‍රික් ලේකම් කාර්යාලයක් හෝ නාරාහේන්පිට ප්‍රධාන කාර්යාලය",
+      normalDesc: "බස්නාහිර පළාතෙන් පිටත සිටින අයට පහසු සහ පිරිවැය අඩු ක්‍රමයකි. ඔබගේ ප්‍රාදේශීය දිස්ත්‍රික් ලේකම් කාර්යාලයට භාරදිය හැක.",
+      normalPt1: "සාමාන්‍ය රජයේ පැවරුම් ගාස්තුව (වාහන කාණ්ඩය අනුව රු. 1,500 - 4,500 පමණ)",
+      normalPt2: "නව ලියාපදිංචි සහතිකය (CR) ලියාපදිංචි තැපෑලෙන් ගැණුම්කරුගේ ලිපිනයට නිවසටම ලැබේ",
+      normalPt3: "විකුණන්නාට කොළඹ පැමිණීමට අවශ්‍ය නොවේ",
+
+      oneDayTitle: "එක් දින සේවාව (One-Day Service)",
+      oneDayTime: "එදිනම (පැය 2 - 4 ඇතුළත)",
+      oneDayLocation: "කොළඹ නාරාහේන්පිට DMT ප්‍රධාන කාර්යාලයේදී පමණි",
+      oneDayDesc: "එදිනම පැය කිහිපයකින් වාහන හිමිකම මාරු කර නව CR පොත අතටම ලබාගත හැකි සීඝ්‍රගාමී සේවාවකි.",
+      oneDayPt1: "අධිභාරයක් සහිත එක්දින ගාස්තුවක් අය කෙරේ (සාමාන්‍ය ගාස්තුව + රු. 1,000 - 3,000)",
+      oneDayPt2: "MTA 6 පෝරමයේ එක් දින සේවා එකඟතා ප්‍රකාශය පිරවීම අනිවාර්ය වේ (මෙම පද්ධතියෙන් ස්වයංක්‍රීයව සිදු වේ)",
+      oneDayPt3: "දෙපාර්ශවයම මුල් හැඳුනුම්පත් සහිතව පෙනී සිටිය යුතුය, නැතහොත් විකුණන්නාගේ JP දිවුරුම් ප්‍රකාශයක් ඉදිරිපත් කළ යුතුය",
+
+      // Rules & Penalties
+      rulesTitle: "නීතිමය කාලසීමාවන් සහ දඩ මුදල් අවදානම",
+      rulesSubtitle: "අනවශ්‍ය දඩ මුදල් සහ නීතිමය ගැටලුවලින් වැළකී සිටීමට මෙම නීති පිළිපදින්න:",
+      rule1Title: "දින 14 නීතිය (දැඩි ලෙස ක්‍රියාත්මක වේ)",
+      rule1Desc: "මෝටර් රථ පනත අනුව, වාහනය පැවරූ දින සිට දින 14ක් ඇතුළත MTA 6A පත්‍රය DMT වෙත යැවිය යුතුය. දින 14 ඉක්මවූ පසු ප්‍රමාද වන එක් එක් මාසය සඳහා දඩ මුදල් අය කෙරේ.",
+      rule2Title: "කාර් සේල්ස් සහ බ්‍රෝකර්වරුන් සඳහා Open Papers",
+      rule2Desc: "වාහනයක් කාර් සේල් එකකට හෝ අතරමැදියෙකුට ලබාදීමේදී ගැණුම්කරුවෙකු හමුවන තුරු දිනය හිස්ව තැබීමට ඉහත ඇති 'Open Papers' විකල්පය භාවිතා කරන්න.",
+      rule3Title: "අත්සන් පෑනෙන්ම තැබිය යුතුය",
+      rule3Desc: "පරිගණක මගින් මුද්‍රිත අත්සන් DMT මගින් ප්‍රතික්ෂේප කරනු ලැබේ. මුද්‍රිත පිටපත්වල නියමිත ස්ථානවල නිල් හෝ කළු පෑනෙන් අත්සන් කරන්න.",
     }
   },
 
@@ -303,6 +503,7 @@ export const translations = {
       title: "இலங்கை வாகன உரிமை பரிமாற்ற படிவங்கள் நிரப்பி",
       subtitle: "அதிகாரப்பூர்வ DMT பரிமாற்ற படிவங்கள் MTA 6A, 6B மற்றும் MTA 8 | சுத்தமான 10 பக்க அச்சு",
       badge: "MTA 6 & 8 தயார்",
+      guide: "வழிகாட்டி & ஆவணங்கள்",
       samplesMenu: "மாதிரி தரவு (Demo)",
       demoSri: "பாரம்பரிய ஸ்ரீ (5 ஸ்ரீ 2525)",
       demoModern: "நவீன எண் (WP CAA-4589)",
@@ -440,6 +641,105 @@ export const translations = {
       title: "இலங்கை மோட்டார் போக்குவரத்து திணைக்கள (DMT / RMV) வாகன உரிமை பரிமாற்ற படிவங்கள் நிரப்பி",
       subtitle: "அதிகாரப்பூர்வ படிவங்கள் MTA 6A, MTA 6B & MTA 8 (படிவம் C & C1) | சுத்தமான 10 பக்கங்கள்",
       disclaimer: "இலங்கை வாகன வாங்குபவர்கள், விற்பனையாளர்கள் மற்றும் வாகன விற்பனையாளர்களுக்கான இலவச பொது சேவை கருவி.",
+    },
+    guide: {
+      navLink: "வழிகாட்டி & ஆவணங்கள்",
+      badge: "மோட்டார் போக்குவரத்து திணைக்கள (DMT / RMV) அதிகாரப்பூர்வ நடைமுறை",
+      title: "வாகன உரிமை மாற்ற முழு வழிகாட்டி மற்றும் தேவையான ஆவணங்கள் பட்டியல்",
+      subtitle: "மோட்டார் போக்குவரத்து திணைக்களத்திற்கு (DMT / RMV) செல்வதற்கு முன் நீங்கள் தெரிந்து கொள்ள வேண்டிய முழுமையான படிமுறைகள் மற்றும் விதிமுறைகள்.",
+      
+      tabAll: "முழு வழிகாட்டி",
+      tabSteps: "படிமுறை வழிகாட்டி",
+      tabDocs: "தேவையான ஆவணங்கள்",
+      tabServices: "சாதாரண vs ஒரு நாள் சேவை",
+      tabRules: "அபராதங்கள் & சட்டங்கள்",
+
+      // Steps
+      stepsTitle: "வாகன உரிமை மாற்றத்திற்கான 5 அதிகாரப்பூர்வ படிமுறைகள்",
+      stepsSubtitle: "தாமதங்கள் அல்லது பிரச்சனைகள் ஏதுமின்றி வாகன உரிமையை மாற்ற பின்வரும் படிகளைப் பின்பற்றவும்:",
+      step1Num: "1",
+      step1Title: "படிவங்களை ஆன்லைனில் நிரப்பி பதிவிறக்கவும்",
+      step1Desc: "விற்பனையாளர், வாங்குபவர், வாகன எண் மற்றும் சாட்சிகளின் விவரங்களை இந்த கருவியில் உள்ளிடவும். MTA 6A, MTA 6B மற்றும் MTA 8 அடங்கிய சுத்தமான 10 பக்க PDF ஐ பதிவிறக்கம் செய்து A4 தாளில் அச்சிடவும்.",
+      step2Num: "2",
+      step2Title: "பேனாவால் கையொப்பமிட்டு 2 சாட்சிகளைச் சேர்க்கவும்",
+      step2Desc: "விற்பனையாளர் MTA 6 படிவத்தின் A, A1, B, B1 பகுதிகளை கையொப்பமிட வேண்டும். வாங்குபவர் MTA 8 படிவத்தை கையொப்பமிட வேண்டும். NIC எண்களுடன் இரண்டு சாட்சிகளின் கையொப்பங்களைப் பெறவும்.",
+      step3Num: "3",
+      step3Title: "MTA 6A & A1 ஆணையாளர் நாயகத்திற்கு அனுப்பவும்",
+      step3Desc: "மிக முக்கியமானது: உரிமை மாற்றப்பட்ட திகதியிலிருந்து 14 நாட்களுக்குள் படிவம் MTA 6A மற்றும் A1 ஐ பதிவுத் தபாலில் மோட்டார் போக்குவரத்து ஆணையாளர் நாயகத்திற்கு அனுப்ப வேண்டும் அல்லது அலுவலகத்தில் ஒப்படைக்க வேண்டும்.",
+      step4Num: "4",
+      step4Title: "அசல் ஆவணங்கள் மற்றும் சான்றளிக்கப்பட்ட பிரதிகளை சேகரிக்கவும்",
+      step4Desc: "அசல் பதிவு சான்றிதழ் (CR / புத்தககம்), செல்லுபடியாகும் வருமான உரிமம் மற்றும் பிரதி, இரு தரப்பினரின் சான்றளிக்கப்பட்ட அடையாள அட்டை பிரதிகள் மற்றும் குத்தகை/கடன் தீர்வு கடிதம் ஆகியவற்றை தயார் செய்யவும்.",
+      step5Num: "5",
+      step5Title: "DMT அலுவலகத்தில் சமர்ப்பித்து கட்டணம் செலுத்தவும்",
+      step5Desc: "வாங்குபவர் MTA 8, MTA 6B மற்றும் ஆவணங்களை நாரஹேன்பிட்ட (ஒரு நாள் சேவை) அல்லது மாவட்ட செயலகத்தில் (சாதாரண சேவை) சமர்ப்பித்து புதிய CR புத்தகத்தைப் பெறலாம்.",
+
+      // Documents Checklist
+      docsTitle: "கட்டாய மற்றும் நிபந்தனைக்குட்பட்ட ஆவணங்கள் பட்டியல்",
+      docsSubtitle: "DMT அலுவலகத்திற்குச் செல்வதற்கு முன் பின்வரும் ஆவணங்கள் உங்களிடம் இருப்பதை உறுதிப்படுத்திக் கொள்ளுங்கள்:",
+      mandatoryBadge: "கட்டாயமானது",
+      conditionalBadge: "நிபந்தனைக்குட்பட்டது",
+      oneDayBadge: "ஒரு நாள் சேவைக்கு மட்டும்",
+
+      doc1Title: "MTA 6 படிவங்கள் (பகுதிகள் A, A1, B, B1)",
+      doc1Desc: "மோட்டார் வாகன உரிமை மாற்ற அறிவிப்பு. விற்பனையாளர் மற்றும் வாங்குபவர் மற்றும் 2 சாட்சிகளால் கையொப்பமிடப்பட்டது.",
+      doc1Tag: "கட்டாயமானது",
+
+      doc2Title: "MTA 8 படிவங்கள் (படிவம் C & C1)",
+      doc2Desc: "உரிமை மாற்றத்தின் போது மோட்டார் வாகனத்தை பதிவு செய்வதற்கான விண்ணப்பம். வாங்குபவரால் கையொப்பமிடப்பட்டது.",
+      doc2Tag: "கட்டாயமானது",
+
+      doc3Title: "அசல் பதிவுச் சான்றிதழ் (CR / வாகனம் புத்தகம்)",
+      doc3Desc: "DMT ஆல் வழங்கப்பட்ட அசல் புத்தகம். சேதமடையாமல் மற்றும் லேமினேட் செய்யப்படாமல் இருக்க வேண்டும்.",
+      doc3Tag: "கட்டாயமானது",
+
+      doc4Title: "செல்லுபடியாகும் வருமான உரிமம் + 1 தெளிவான பிரதி",
+      doc4Desc: "வாகனத்திற்கான அசல் வருமான உரிமம் மற்றும் அதன் தெளிவான ஒரு பிரதி.",
+      doc4Tag: "கட்டாயமானது",
+
+      doc5Title: "சான்றளிக்கப்பட்ட அடையாள அட்டை பிரதிகள் (இரு தரப்பினரும்)",
+      doc5Desc: "விற்பனையாளர் மற்றும் வாங்குபவர் இருவரின் தேசிய அடையாள அட்டை (NIC) பிரதிகள், JP ஒருவரால் சான்றளிக்கப்பட்டது.",
+      doc5Tag: "கட்டாயமானது",
+
+      doc6Title: "குத்தகை / கடன் நீக்கல் கடிதம் (CMT 63)",
+      doc6Desc: "வாகனம் வங்கியிலோ அல்லது குத்தகைக் கம்பனியிலோ கடன் பட்டிருந்தால், பூரண உரிமையை ரத்து செய்வதற்கான கடிதம் மற்றும் CMT 63 படிவம்.",
+      doc6Tag: "நிபந்தனைக்குட்பட்டது",
+
+      doc7Title: "வாகன எடைச் சான்றிதழ் (CMT 130)",
+      doc7Desc: "வேன், லொறி, டிரக், பஸ் மற்றும் வணிக போக்குவரத்து வாகனங்களுக்கு தேவைப்படுகிறது.",
+      doc7Tag: "நிபந்தனைக்குட்பட்டது",
+
+      doc8Title: "ஒரு நாள் சேவை ஒப்புதல் கடிதம் / சத்தியக்கடதாசி",
+      doc8Desc: "நாரஹேன்பிட்ட ஒரு நாள் விரைவு சேவைக்கு: இருவரும் நேரில் சமூகமளிக்க வேண்டும், அல்லது விற்பனையாளரின் JP சான்றளிக்கப்பட்ட சத்தியக்கடதாசி சமர்ப்பிக்கப்பட வேண்டும்.",
+      doc8Tag: "ஒரு நாள் சேவைக்கு மட்டும்",
+
+      // Services Comparison
+      servicesTitle: "சாதாரண சேவை vs ஒரு நாள் விரைவு சேவை",
+      servicesSubtitle: "உங்கள் அவசரத்திற்கு ஏற்ற சேவையைத் தேர்ந்தெடுக்கவும்:",
+      normalTitle: "சாதாரண சேவை (Normal Service)",
+      normalTime: "2 முதல் 4 வாரங்கள்",
+      normalLocation: "எந்தவொரு மாவட்ட செயலகம் அல்லது நாரஹேன்பிட்ட",
+      normalDesc: "மேல் மாகாணத்திற்கு வெளியே உள்ள வாகன உரிமையாளர்களுக்கு வசதியான மற்றும் செலவு குறைந்த முறை.",
+      normalPt1: "நிலையான அரசாங்க மாற்றுக் கட்டணம் (வாகன வகுப்பைப் பொறுத்து சுமார் ரூ. 1,500 - ரூ. 4,500)",
+      normalPt2: "புதிய பதிவுச் சான்றிதழ் தபால் மூலம் வாங்குபவரின் நிரந்தர முகவரிக்கு அனுப்பப்படும்",
+      normalPt3: "விற்பனையாளர் கொழும்புக்கு வர வேண்டிய அவசியமில்லை",
+
+      oneDayTitle: "ஒரு நாள் சேவை (One-Day Service)",
+      oneDayTime: "அதே நாள் (2 - 4 மணி நேரத்திற்குள்)",
+      oneDayLocation: "கொழும்பு நாரஹேன்பிட்ட தலைமை அலுவலகத்தில் மட்டும்",
+      oneDayDesc: "அன்றைய தினமே வாகன உரிமையை மாற்றி புதிய பதிவுப் புத்தகத்தைப் பெறும் அதிவேக சேவை.",
+      oneDayPt1: "கூடுதல் கட்டணத்துடன் கூடிய விரைவு சேவை (சாதாரண கட்டணம் + ரூ. 1,000 - ரூ. 3,000)",
+      oneDayPt2: "MTA 6 படிவத்தில் 'ஒரு நாள் சேவை ஒப்புதல்' நிரப்பப்பட்டிருக்க வேண்டும் (இங்கு தானாகவே நடக்கும்)",
+      oneDayPt3: "இருவரும் அசல் அடையாள அட்டைகளுடன் சமூகமளிக்க வேண்டும் அல்லது விற்பனையாளரின் JP சத்தியக்கடதாசி தேவைப்படும்",
+
+      // Rules & Penalties
+      rulesTitle: "முக்கியமான DMT சட்ட காலக்கெடு & தாமத அபராதங்கள்",
+      rulesSubtitle: "தேவையற்ற அபராதங்கள் மற்றும் சட்டச் சிக்கல்களைத் தவிர்க்க பின்வரும் விதிகளை நினைவில் கொள்ளுங்கள்:",
+      rule1Title: "14-நாள் விதி (கண்டிப்பாக நடைமுறைப்படுத்தப்படுகிறது)",
+      rule1Desc: "வாகன உரிமை மாற்றப்பட்ட திகதியிலிருந்து 14 நாட்களுக்குள் படிவம் MTA 6A DMT க்கு ஒப்படைக்கப்பட வேண்டும். தாமதமாகும் ஒவ்வொரு மாதத்திற்கும் அபராதம் விதிக்கப்படும்.",
+      rule2Title: "வாகன விற்பனையாளர்களுக்கான Open Papers",
+      rule2Desc: "இறுதி வாங்குபவர் கிடைக்கும் வரை திகதியை காலியாக விட மேலே உள்ள 'Open Papers' விருப்பத்தைப் பயன்படுத்தவும். இது தாமத அபராதங்களைத் தவிர்க்கும்.",
+      rule3Title: "பேனா கையொப்பங்கள் மட்டுமே செல்லுபடியாகும்",
+      rule3Desc: "கணினி மூலம் அச்சிடப்பட்ட கையொப்பங்களை DMT நிராகரிக்கிறது. அச்சிடப்பட்ட படிவங்களில் நீல அல்லது கருப்பு பேனாவால் கையொப்பமிடவும்.",
     }
   }
 };

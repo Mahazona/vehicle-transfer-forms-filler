@@ -6,6 +6,7 @@ import DemoPresetsCard from '../components/DemoPresetsCard';
 import NoticeCard from '../components/NoticeCard';
 import VehicleForm from '../components/VehicleForm';
 import PdfPreview from '../components/PdfPreview';
+import InstructionsGuide from '../components/InstructionsGuide';
 import { sriSampleData, modernSampleData, blankFormData } from '../data/sampleData';
 import { translations } from '../data/translations';
 import { generateFilledVehicleTransferPDF, printPdfBlobDirectly, downloadPdfBlob } from '../utils/pdfFiller';
@@ -301,6 +302,9 @@ export default function HomePage() {
           </div>
 
         </div>
+
+        {/* Complete Instructions & Required Documents Help Guide */}
+        <InstructionsGuide t={t} />
       </main>
 
       {/* Accessible Civic Footer */}
